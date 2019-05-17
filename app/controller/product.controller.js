@@ -77,6 +77,30 @@ exports.findAllCategory = (req, res) => {
 
 // Create a product
 
+exports.createProduct = (req, res)=>{
+  console.log(req.body);
+  
+  var {itemName, category, image1, image2, image3, price, discount, upvoted} = req.body; 
+  Product.create({
+    itemName, category, image1, image2, image3, price, discount, upvoted
+  }).then(product=>{
+    if(!product){
+      return res.status(500).send({
+        success: false, 
+        message:"unable to create resource"
+      }); 
+    }
+    return res.status(200).send(product); 
+  }).catch(err=>{
+    res.status(500).send({
+      success: false, 
+      message: "Internal server error",
+      error: err
+    })
+  })
+
+
+}
 
 // fetch all product by id 
 

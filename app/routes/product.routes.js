@@ -6,4 +6,7 @@ module.exports = function(app){
 
     app.get('/api/categories', productController.findAllCategory); 
 
+    app.post('/api/product', productController.createProduct); 
+
+
 }
