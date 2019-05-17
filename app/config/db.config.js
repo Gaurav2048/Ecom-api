@@ -40,5 +40,4 @@ const sequelize = new Sequelize(env.heroku, {
     db.Upvote = require('../models/Upvote.model.js')(sequelize,Sequelize); 
 
 
-
     module.exports = db; 

@@ -102,6 +102,32 @@ exports.createProduct = (req, res)=>{
 
 }
 
+// create a product 
+exports.createCategory = (req, res)=>{
+  console.log(req.body);
+  
+  var {categoryName, image} = req.body; 
+  Category.create({
+    categoryName, image
+  }).then(category=>{
+    if(!category){
+      return res.status(500).send({
+        success: false, 
+        message:"unable to create resource"
+      }); 
+    }
+    return res.status(200).send(category); 
+  }).catch(err=>{
+    res.status(500).send({
+      success: false, 
+      message: "Internal server error",
+      error: err
+    })
+  })
+
+
+}
+
 // fetch all product by id 
 
 // update a product 

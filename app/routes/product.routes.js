@@ -8,5 +8,7 @@ module.exports = function(app){
 
     app.post('/api/product', productController.createProduct); 
 
+    app.post('/api/category', productController.createCategory); 
+    
 
 }
