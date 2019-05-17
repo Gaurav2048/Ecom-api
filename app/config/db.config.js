@@ -2,27 +2,27 @@ const env = require('./env');
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(env.database,
-                                env.username,
-                                env.password,
-                                {
-                                    host: env.host,
-                                    dialect:env.dialect,
-                                    OperatorsAliases:false,
+// const sequelize = new Sequelize(env.database,
+//                                 env.username,
+//                                 env.password,
+//                                 {
+//                                     host: env.host,
+//                                     dialect:env.dialect,
+//                                     OperatorsAliases:false,
 
-                                    pool:{
-                                        max:env.pool.max,
-                                        min: env.pool.min,
-                                        acquire: env.pool.acquire,
-                                        idle: env.pool.idle
-                                    }
-                                }
-    ); 
+//                                     pool:{
+//                                         max:env.pool.max,
+//                                         min: env.pool.min,
+//                                         acquire: env.pool.acquire,
+//                                         idle: env.pool.idle
+//                                     }
+//                                 }
+//     ); 
 
-// const sequelize = new Sequelize(env.heroku, {
-//         dialect:env.dialect
-//     }
-// ); 
+const sequelize = new Sequelize(env.heroku, {
+        dialect:env.dialect
+    }
+); 
 
 
 
