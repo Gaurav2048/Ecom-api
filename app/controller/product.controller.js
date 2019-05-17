@@ -53,7 +53,8 @@ exports.findAll = (req, res) => {
 
     res.status(400).send({
       success: false,
-      "message": "Failed to provie data"
+      "message": "Failed to provie data", 
+      error:err 
     })
   })
 }
