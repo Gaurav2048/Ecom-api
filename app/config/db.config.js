@@ -39,7 +39,6 @@ const sequelize = new Sequelize(env.heroku, {
     db.Caterogy = require('../models/Caterogy.model.js')(sequelize, Sequelize);
     db.Upvote = require('../models/Upvote.model.js')(sequelize,Sequelize); 
 
-    db.Caterogy.hasMany(db.products,{foreignKey:'id'})
 
 
     module.exports = db; 
