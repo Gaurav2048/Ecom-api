@@ -19,7 +19,7 @@ const Sequelize = require('sequelize');
 //                                 }
 //     ); 
 
-const sequelize = new Sequelize(env.heruko, {
+const sequelize = new Sequelize(env.heroku, {
         dialect:env.dialect
     }
 ); 
