@@ -191,7 +191,9 @@ exports.propuar_products= (req,res)=>{
           }
 
         })
-        res.status(200).send(products);
+        res.status(200).send({
+          products:products          
+        } );
     }).catch(err=>{
       res.status(500).send({
         success: false,
