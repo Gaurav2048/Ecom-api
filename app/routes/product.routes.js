@@ -10,5 +10,7 @@ module.exports = function(app){
 
     app.post('/api/category', productController.createCategory); 
     
+    
+    app.get('/api/get_popular_products', productController.propuar_products); 
 
 }
