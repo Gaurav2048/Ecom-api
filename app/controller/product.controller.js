@@ -222,7 +222,7 @@ exports.find_new_products = (req, res) => {
       ['createdAt', 'DESC']
     ],
     limit: 10, 
-    offset: id
+    offset: 3
   }).then(products => {
     var promises = [];
       products.forEach(product=>{
