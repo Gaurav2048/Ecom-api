@@ -217,16 +217,12 @@ exports.propuar_products = (req, res) => {
 // on route new_products 
 exports.find_new_products = (req, res) => {
   var { id, user_id } = req.query;
-  Product.findAll({
-    where: {
-      id: {
-        $gt: id
-      }
-    },
+  Product.findAndCountAll({
     order: [
       ['createdAt', 'DESC']
     ],
-    limit: 10
+    limit: 10, 
+    offset: id
   }).then(products => {
     var promises = [];
       products.forEach(product=>{
