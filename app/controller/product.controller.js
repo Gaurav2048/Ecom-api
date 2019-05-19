@@ -277,7 +277,7 @@ exports.new_popular_products = (req, res) => {
   Product.findAll({
     where: {
       id: {
-        $gt: id
+        [Op.gt]: id
       }
     },
     order: [
@@ -332,7 +332,7 @@ exports.new_exclusive_products = (req, res) => {
   Product.findAll({
     where: {
       id: {
-        $gt: id
+        [Op.gt]: id
       }
     },
     order: [
@@ -388,7 +388,7 @@ exports.new_onsale_products = (req, res) => {
   Product.findAll({
     where: {
       id: {
-        $gt: id
+        [Op.gt]: id
       }
     },
     order: [
