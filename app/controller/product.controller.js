@@ -336,8 +336,8 @@ exports.new_exclusive_products = (req, res) => {
       }
     },
     order: [
-      ['createdAt', 'DESC'],
-      ['price', 'DESC']
+      ['price', 'DESC'],
+      ['createdAt', 'DESC']
     ],
     limit: 10
   }).then(products => {
