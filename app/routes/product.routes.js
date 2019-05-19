@@ -13,4 +13,15 @@ module.exports = function(app){
     
     app.get('/api/get_popular_products', productController.propuar_products); 
 
+  
+  
+    app.get('/api/new_products', productController.find_new_products); 
+
+    app.get('/api/new_popular_products', productController.new_popular_products); 
+
+    app.get('/api/new_exclusive_products', productController.new_exclusive_products); 
+
+    app.get('/api/new_onsale_products', productController.new_onsale_products); 
+
+
 }
