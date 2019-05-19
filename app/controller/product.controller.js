@@ -392,8 +392,8 @@ exports.new_onsale_products = (req, res) => {
       }
     },
     order: [
-      ['createdAt', 'DESC'],
-      ['discount', 'DESC']
+      ['discount', 'DESC'], 
+      ['createdAt', 'DESC']
     ],
     limit: 10
   }).then(products => {
