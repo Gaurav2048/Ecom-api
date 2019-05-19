@@ -1,4 +1,6 @@
 const db = require('../config/db.config.js');
+const { Op } = require('sequelize')
+
 
 const Product = db.products;
 const Upvote = db.Upvote;
@@ -217,12 +219,16 @@ exports.propuar_products = (req, res) => {
 // on route new_products 
 exports.find_new_products = (req, res) => {
   var { id, user_id } = req.query;
-  Product.findAndCountAll({
+  Product.findAll({
+    where: {
+      id: {
+        [Op.gt]: id
+      }
+    },
     order: [
       ['createdAt', 'DESC']
     ],
-    limit: 10, 
-    offset: 3
+    limit: 10
   }).then(products => {
     var promises = [];
       products.forEach(product=>{
