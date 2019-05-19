@@ -224,7 +224,7 @@ exports.find_new_products = (req, res) => {
       }
     },
     order: [
-      ['created_At', 'DESC']
+      ['createdAt', 'DESC']
     ],
     limit: 10
   }).then(products => {
@@ -279,7 +279,7 @@ exports.new_popular_products = (req, res) => {
       }
     },
     order: [
-      ['created_At', 'DESC'],
+      ['createdAt', 'DESC'],
       ['upvoted','DESC']
     ],
     limit: 10
@@ -334,7 +334,7 @@ exports.new_exclusive_products = (req, res) => {
       }
     },
     order: [
-      ['created_At', 'DESC'],
+      ['createdAt', 'DESC'],
       ['price', 'DESC']
     ],
     limit: 10
@@ -390,7 +390,7 @@ exports.new_onsale_products = (req, res) => {
       }
     },
     order: [
-      ['created_At', 'DESC'],
+      ['createdAt', 'DESC'],
       ['discount', 'DESC']
     ],
     limit: 10
