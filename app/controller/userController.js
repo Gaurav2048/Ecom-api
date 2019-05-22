@@ -78,7 +78,7 @@ exports.signIn = (req, res)=> {
         });
     });
 
-    exports.verifyToken = (req, res)=>{
+    exports.checkMeth = (req, res)=>{
         res.status(200).send({
             success: true, 
             message: "message"
