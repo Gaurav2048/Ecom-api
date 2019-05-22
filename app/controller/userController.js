@@ -11,7 +11,7 @@ exports.signup = (req, res)=>{
     User.create({
         name: req.body.name,
         email:req.body.email,
-        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
+        password: bcrypt.hashSync(req.body.password, 8),
         image: req.body.image
     }).then(user=>{
         if(!user){
@@ -56,14 +56,19 @@ exports.signIn = (req, res)=> {
         }
 
         var token = jwt.sign({id:user.id}, config.secret, {
-            expiresIn: 86400 // 24 hours
+            expiresIn: 30*86400 // 24 hours
         });
 
-        res.status(200).send({
-            success: true, accessToken: token, message:"You are in"
-        }); 
-
-
+        User.save().then(()=>{
+            res.status(200).send({
+                success: true, accessToken: token, message:"You are in"
+            }); 
+        }).catch(err=>{
+            res.status(500).send({
+                success: false,
+                message: "Internal server error"+err
+            });
+        })
     }).catch(err => {
         res.status(500).send({
             success: false,
