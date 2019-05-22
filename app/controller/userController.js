@@ -78,4 +78,11 @@ exports.signIn = (req, res)=> {
         });
     });
 
+    exports.verifyToken = (req, res)=>{
+        res.status(200).send({
+            success: true, 
+            message: "message"
+        }); 
+    }
+
 }

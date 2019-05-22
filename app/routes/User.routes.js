@@ -1,5 +1,5 @@
 const verifySignUp = require('./verifySignUp'); 
-//const authJwt = require('./authJwt'); 
+const verifyJtToken = require('./verifyJwtToken'); 
 
 
 module.exports = function(app){
@@ -8,5 +8,7 @@ module.exports = function(app){
     app.post('/api/auth/signup',verifySignUp.checkDuplicateUserNameAndPassword, userController.signup);
 
     app.post('/api/auth/signin', userController.signIn); 
+
+    app.post('/api/auth/checkmiddleware', verifyJtToken.verifyToken, userController.verifyToken); 
 
 }
