@@ -16,6 +16,8 @@ verifyToken = (req, res, next) => {
 
     jwt.verify(token, config.secret, (err, decode) => {
         if (err) {
+            console.log(err);
+            
             return res.status(500).send({
                 auth: false,
                 message: "Failed to authenticate for causes " + err
@@ -35,6 +37,12 @@ verifyToken = (req, res, next) => {
                     message: "Failed to authenticate for causes " + err
                 });
             }
+        }).catch(err=>{
+            console.log(err);
+            return res.status(500).send({
+                auth: false,
+                message: "Failed to authenticate for causes " + err
+            });
         })
 
 
