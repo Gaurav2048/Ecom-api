@@ -11,7 +11,7 @@ exports.signup = (req, res)=>{
     User.create({
         name: req.body.name,
         email:req.body.email,
-        password: bcrypt.hashSync(req.body.password, 8),
+        password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(8)),
         image: req.body.image
     }).then(user=>{
         if(!user){
