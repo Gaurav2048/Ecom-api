@@ -63,7 +63,7 @@ exports.signIn = (req, res)=> {
 
         user.save().then(()=>{
             res.status(200).send({
-                success: true, accessToken: token, message:"You are in"
+                success: true, accessToken: token,user, message:"You are in"
             }); 
         }).catch(err=>{
             res.status(500).send({
