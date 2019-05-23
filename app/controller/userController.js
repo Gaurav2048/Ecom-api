@@ -67,6 +67,7 @@ exports.signIn = (req, res)=> {
                 "name": user.name,
                 "email": user.email, 
                 "image":user.image, 
+                "id":user.id, 
                 message:"You are in"
             }); 
         }).catch(err=>{
