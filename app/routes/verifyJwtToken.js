@@ -14,39 +14,50 @@ verifyToken = (req, res, next) => {
         });
     }
 
-    jwt.verify(token, config.secret, (err, decode) => {
-        if (err) {
-            console.log(err);
-            
-            return res.status(500).send({
-                auth: false,
-                message: "Failed to authenticate for causes " + err
+    jwt.verify(token, config.secret, (err, decoded) => {
+        if (err){
+          return res.status(500).send({ 
+              auth: false, 
+              message: 'Fail to Authentication. Error -> ' + err 
             });
         }
+        req.userId = decoded.id;
+        next();
+      });
 
-        User.findOne({
-            id: decode.id,
-            token: token
-        }).then(user => {
-            if (user) {
-                req.userId = decode.id;
-                next();
-            } else {
-                return res.status(500).send({
-                    auth: false,
-                    message: "Failed to authenticate for causes " + err
-                });
-            }
-        }).catch(err=>{
-            console.log(err);
-            return res.status(500).send({
-                auth: false,
-                message: "Failed to authenticate for causes " + err
-            });
-        })
+    // jwt.verify(token, config.secret, (err, decode) => {
+    //     if (err) {
+    //         console.log(err);
+            
+    //         return res.status(500).send({
+    //             auth: false,
+    //             message: "Failed to authenticate for causes " + err
+    //         });
+    //     }
+
+    //     User.findOne({
+    //         id: decode.id,
+    //         token: token
+    //     }).then(user => {
+    //         if (user) {
+    //             req.userId = decode.id;
+    //             next();
+    //         } else {
+    //             return res.status(500).send({
+    //                 auth: false,
+    //                 message: "Failed to authenticate for causes " + err
+    //             });
+    //         }
+    //     }).catch(err=>{
+    //         console.log(err);
+    //         return res.status(500).send({
+    //             auth: false,
+    //             message: "Failed to authenticate for causes " + err
+    //         });
+    //     })
 
 
-    });
+    // });
 
 }
 
