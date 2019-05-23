@@ -9,6 +9,6 @@ module.exports = function(app){
 
     app.post('/api/auth/signin', userController.signIn); 
 
-    app.post('/api/auth/checkmiddle', verifyJtToken.verifyToken, userController.checkMeth); 
+    // app.post('/api/auth/checkmiddle', verifyJtToken.verifyToken, userController.checkMeth); 
 
 }
