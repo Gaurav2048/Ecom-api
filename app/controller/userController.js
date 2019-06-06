@@ -34,6 +34,13 @@ exports.signup = (req, res)=>{
     })
 }
 
+exports.tryout =(req, res)=>{
+    res.status(200).send({
+        email:req.body.email, 
+        password: req.body.password
+    })
+}
+
 exports.signIn = (req, res)=> {
 
     User.findOne({

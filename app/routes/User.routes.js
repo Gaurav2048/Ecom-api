@@ -7,7 +7,7 @@ module.exports = function(app){
 
     app.post('/api/auth/signup',verifySignUp.checkDuplicateUserNameAndPassword, userController.signup);
 
-    app.post('/api/auth/signin', userController.signIn); 
+    app.post('/api/auth/signin', userController.tryout); 
 
      app.get('/api/auth/checkmiddle', authJwt.verifyToken, userController.signIn); 
 
