@@ -82,9 +82,9 @@ exports.findAllCategory = (req, res) => {
 exports.createProduct = (req, res) => {
   console.log(req.body);
 
-  var { itemName, category, image1, image2, image3, price, discount, upvoted } = req.body;
+  var { itemName, category, description,  image1, image2, image3, price, discount, upvoted } = req.body;
   Product.create({
-    itemName, category, image1, image2, image3, price, discount, upvoted
+    itemName, category,description,  image1, image2, image3, price, discount, upvoted
   }).then(product => {
     if (!product) {
       return res.status(500).send({
