@@ -468,7 +468,6 @@ exports.searchByPhrase = (req, res) => {
         }else{
           product_["isupvoted"] = "1"
         }
-        products[index].push(product_); 
       })
       res.status(200).send({
          products, phrase
