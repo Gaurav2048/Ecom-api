@@ -489,6 +489,62 @@ exports.searchByPhrase = (req, res) => {
 
 
 
+
+exports.searchOnPopularProducts = (req, res) => {
+  var {phrase , offset,user_id } = req.query; 
+  Product.findAll({
+    where: {
+      itemName: {
+        [Op.like]: `%${phrase}%`
+      },
+      id:{
+        [Op.gt]: offset
+      }
+    },
+    order:[
+        ['upvoted', 'DESC']
+    ] , 
+    limit: 10
+  }).then(products =>{
+    var promises = [];
+    products.forEach(product=>{
+      var promise = Upvote.findOne({
+        user_id: user_id, 
+        product_id: product.id
+      }); 
+      promises.push(promise); 
+    })
+
+    Promise.all(promises).then(results=>{
+      results.map((result, index)=>{
+        if(result === null){
+          products[index].upvoted="0"
+        }else{
+          products[index].upvoted ="1"
+        }
+      })
+      res.status(200).send({
+         products, phrase
+      })
+    }).catch(err=>{
+      res.status(500).send({
+        success: false,
+        message:"Internal server error", 
+        error: err
+      })
+    })
+  }).catch(err => {
+    res.status(500).send({
+      success: false,
+      message:"Internal server error", 
+      error: err
+    })
+  })
+}
+
+
+
+
 //--------------
 
 // fetch all product by id 
