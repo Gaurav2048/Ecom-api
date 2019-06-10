@@ -26,7 +26,10 @@ module.exports = (sequelize,Sequelize) => {
         },
         upvoted: {
             type: Sequelize.INTEGER
-        }
+        },
+        isupvoted:{
+                type:Sequelize.VIRTUAL
+        } 
     });
 
     return Product; 
