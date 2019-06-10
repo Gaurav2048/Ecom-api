@@ -434,6 +434,60 @@ exports.new_onsale_products = (req, res) => {
   })
 }
 
+// ------- 
+
+// search by phrase 
+
+exports.searchByPhrase = (req, res) => {
+  var {phrase , offset } = req.query; 
+  Product.findAll({
+    where: {
+      itemName: {
+        [Op.like]: `%${phrase}%`
+      },
+      id:{
+        [Op.gt]: id
+      }
+    }, 
+    limit: 10
+  }).then(products =>{
+    var promises = [];
+    products.forEach(product=>{
+      var promise = Upvote.findOne({
+        user_id: user_id, 
+        product_id: product.id
+      }); 
+      promises.push(promise); 
+    })
+
+    Promise.all(promises).then(results=>{
+      results.map((result, index)=>{
+        if(result === null){
+          products[index].upvoted="0"
+        }else{
+          products[index].upvoted ="1"
+        }
+      })
+      res.status(200).send({
+        products: products
+      })
+    }).catch(err=>{
+      res.status(500).send({
+        success: false,
+        message:"Internal server error", 
+        error: err
+      })
+    })
+  }).catch(err => {
+    res.status(500).send({
+      success: false,
+      message:"Internal server error", 
+      error: err
+    })
+  })
+}
+
+
 
 //--------------
 
