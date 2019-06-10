@@ -459,18 +459,20 @@ exports.searchByPhrase = (req, res) => {
       }); 
       promises.push(promise); 
     })
-
+    var return_array = []; 
     Promise.all(promises).then(results=>{
       results.map((result, index)=>{
         var product_ = products[index]; 
         if(result === null){
-         Object.assign(...product_, {isupvoted:"0"})
+         const obj = {...product_, isupvoted:0}
+         return_array.push(obj); 
         }else{
-          Object.assign(...product_, {isupvoted:"1"})
+          const obj = {...product_, isupvoted:1};
+          return_array.push(obj); 
         }
       })
       res.status(200).send({
-         products, phrase
+         products:return_array, phrase
       })
     }).catch(err=>{
       res.status(500).send({
