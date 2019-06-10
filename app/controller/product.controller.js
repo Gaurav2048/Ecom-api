@@ -470,7 +470,7 @@ exports.searchByPhrase = (req, res) => {
         }
       })
       res.status(200).send({
-         products:return_array, phrase
+         products, phrase
       })
     }).catch(err=>{
       res.status(500).send({
