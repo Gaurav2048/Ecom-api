@@ -187,9 +187,9 @@ exports.propuar_products = (req, res) => {
     Promise.all(promises).then(results => {
       results.map((result, index) => {
         if (result === null) {
-          products[index].isupvoted = "0"
+          products[index].push({isupdated:0})
         } else {
-          products[index].isupvoted = "1";
+          products[index].push({isupdated:1})
         }
       })
       res.status(200).send({
@@ -242,9 +242,9 @@ exports.find_new_products = (req, res) => {
       Promise.all(promises).then(results=>{
         results.map((result, index)=>{
           if(result === null){
-            products[index].isupvoted="0"
+            products[index].push({isupdated:0})
           }else{
-            products[index].isupvoted ="1"
+            products[index].push({isupdated:1})
           }
         })
         res.status(200).send({
@@ -298,9 +298,9 @@ exports.new_popular_products = (req, res) => {
       Promise.all(promises).then(results=>{
         results.map((result, index)=>{
           if(result === null){
-            products[index].isupvoted="0"
+            products[index].push({isupdated:0})
           }else{
-            products[index].isupvoted="1"
+            products[index].push({isupdated:1})
           }
         })
         res.status(200).send({
@@ -353,9 +353,9 @@ exports.new_exclusive_products = (req, res) => {
       Promise.all(promises).then(results=>{
         results.map((result, index)=>{
           if(result === null){
-            products[index].isupvoted="0"
+            products[index].push({isupdated:0})
           }else{
-            products[index].isupvoted ="1"
+            products[index].push({isupdated:1})
           }
         })
         res.status(200).send({
@@ -409,9 +409,9 @@ exports.new_onsale_products = (req, res) => {
       Promise.all(promises).then(results=>{
         results.map((result, index)=>{
           if(result === null){
-            products[index].isupvoted="0"
+            products[index].push({isupdated:0})
           }else{
-            products[index].isupvoted ="1"
+            products[index].push({isupdated:1})
           }
         })
         res.status(200).send({
@@ -463,9 +463,9 @@ exports.searchByPhrase = (req, res) => {
     Promise.all(promises).then(results=>{
       results.map((result, index)=>{
         if(result === null){
-          products[index].isupvoted="0"
+          products[index].push({isupdated:0})
         }else{
-          products[index].isupvoted ="1"
+          products[index].push({isupdated:1})
         }
       })
       res.status(200).send({
@@ -518,9 +518,9 @@ exports.searchOnPopularProducts = (req, res) => {
     Promise.all(promises).then(results=>{
       results.map((result, index)=>{
         if(result === null){
-          products[index].isupvoted="0"
+          products[index].push({isupdated:0})
         }else{
-          products[index].isupvoted ="1"
+          products[index].push({isupdated:1})
         }
       })
       res.status(200).send({
