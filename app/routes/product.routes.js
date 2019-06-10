@@ -25,7 +25,7 @@ module.exports = function(app){
 
 
     // serch routes 
-    app.get('api/suggestions', productController.searchByPhrase); 
+    app.get('/api/suggestions', productController.searchByPhrase); 
 
 
 }
