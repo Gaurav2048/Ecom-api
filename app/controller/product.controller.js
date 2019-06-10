@@ -463,11 +463,10 @@ exports.searchByPhrase = (req, res) => {
     Promise.all(promises).then(results=>{
       results.map((result, index)=>{
         if(result === null){
-          products[index].isupvoted="0"
+          products[index]["isupvoted"]="0"
         }else{
-          products[index].isupvoted ="1"
+          products[index]["isupvoted"] ="1"
         }
-        products[index].isupvoted ="1"
       })
       res.status(200).send({
          products, phrase
