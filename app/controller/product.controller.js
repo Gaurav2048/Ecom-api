@@ -464,11 +464,11 @@ exports.searchByPhrase = (req, res) => {
       results.map((result, index)=>{
         var product_ = products[index]; 
         if(result === null){
-          product_ = {...product_, isupvoted:0}
+          product_.uppvoted="0"
         }else{
-           product_ = {...product_, isupvoted:1};
+           product_.uppvoted="0"
         }
-        products[index].push(product_); 
+        
       })
       res.status(200).send({
          products, phrase
