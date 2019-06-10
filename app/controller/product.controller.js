@@ -446,7 +446,7 @@ exports.searchByPhrase = (req, res) => {
         [Op.like]: `%${phrase}%`
       },
       id:{
-        [Op.gt]: id
+        [Op.gt]: offset
       }
     }, 
     limit: 10
