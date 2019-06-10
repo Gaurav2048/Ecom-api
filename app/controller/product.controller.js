@@ -464,9 +464,9 @@ exports.searchByPhrase = (req, res) => {
       results.map((result, index)=>{
         var product_ = products[index]; 
         if(result === null){
-          Object.assign(obj, {isupvoted: "0"});
+          Object.assign(product_, {isupvoted: "0"});
         }else{
-          Object.assign(obj, {isupvoted: "1"});
+          Object.assign(product_, {isupvoted: "1"});
         }
       })
       res.status(200).send({
