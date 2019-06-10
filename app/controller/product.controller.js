@@ -439,7 +439,7 @@ exports.new_onsale_products = (req, res) => {
 // search by phrase 
 
 exports.searchByPhrase = (req, res) => {
-  var {phrase , offset } = req.query; 
+  var {phrase , offset,user_id } = req.query; 
   Product.findAll({
     where: {
       itemName: {
