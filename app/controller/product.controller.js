@@ -469,7 +469,7 @@ exports.searchByPhrase = (req, res) => {
         }
       })
       res.status(200).send({
-        products: products
+         products, phrase
       })
     }).catch(err=>{
       res.status(500).send({
