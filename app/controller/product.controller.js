@@ -459,16 +459,14 @@ exports.searchByPhrase = (req, res) => {
       }); 
       promises.push(promise); 
     })
-    var return_array = []; 
+    
     Promise.all(promises).then(results=>{
       results.map((result, index)=>{
         var product_ = products[index]; 
         if(result === null){
-         const obj = {...product_, isupvoted:0}
-         return_array.push(obj); 
+          product_ = {...product_, isupvoted:0}
         }else{
-          const obj = {...product_, isupvoted:1};
-          return_array.push(obj); 
+           product_ = {...product_, isupvoted:1};
         }
       })
       res.status(200).send({
