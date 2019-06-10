@@ -475,7 +475,7 @@ exports.searchByPhrase = (req, res) => {
     }).catch(err=>{
       res.status(500).send({
         success: false,
-        message:"Internal server error", 
+        message:"Internal server error 1", 
         error: err
       })
     })
