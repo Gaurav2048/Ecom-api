@@ -329,9 +329,10 @@ exports.new_popular_products = (req, res) => {
 // get new_exclusive_products 
 
 exports.new_exclusive_products = (req, res) => {
-  var { id, user_id } = req.query;
+  var { id, user_id , category} = req.query;
   Product.findAll({
     where: {
+      category, 
       id: {
         [Op.gt]: id
       }
@@ -385,9 +386,10 @@ exports.new_exclusive_products = (req, res) => {
 
 
 exports.new_onsale_products = (req, res) => {
-  var { id, user_id } = req.query;
+  var { id, user_id , category } = req.query;
   Product.findAll({
     where: {
+      category, 
       id: {
         [Op.gt]: id
       }
