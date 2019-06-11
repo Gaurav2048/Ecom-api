@@ -23,6 +23,8 @@ module.exports = function(app){
 
     app.get('/api/new_onsale_products', productController.new_onsale_products); 
 
+    app.get('/api/new_category_products', productController.new_category_products);
+
 
     // serch routes 
     app.get('/api/suggestions', productController.searchByPhrase); 

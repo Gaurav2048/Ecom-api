@@ -282,8 +282,7 @@ exports.new_popular_products = (req, res) => {
       }
     },
     order: [
-      ['createdAt', 'DESC'],
-      ['upvoted','DESC']
+      ['createdAt', 'DESC']
     ],
     limit: 10
   }).then(products => {
@@ -302,6 +301,60 @@ exports.new_popular_products = (req, res) => {
             products[index].isupvoted="0"
           }else{
             products[index].isupvoted="1"
+          }
+        })
+        res.status(200).send({
+          products: products
+        })
+      }).catch(err=>{
+        res.status(500).send({
+          success: false,
+          message:"Internal server error", 
+          error: err
+        })
+      })
+
+  }).catch(err=>{
+    res.status(500).send({
+      success: false,
+      message:"Internal server error", 
+      error: err
+    })
+  })
+}
+
+
+// new_category_products
+
+
+exports.new_category_products = (req, res) => {
+  var { id, user_id } = req.query;
+  Product.findAll({
+    where: {
+      id: {
+        [Op.gt]: id
+      }
+    },
+    order: [
+      ['createdAt', 'DESC']
+    ],
+    limit: 10
+  }).then(products => {
+    var promises = [];
+      products.forEach(product=>{
+        var promise = Upvote.findOne({
+          user_id: user_id, 
+          product_id: product.id
+        }); 
+        promises.push(promise); 
+      })
+
+      Promise.all(promises).then(results=>{
+        results.map((result, index)=>{
+          if(result === null){
+            products[index].isupvoted="0"
+          }else{
+            products[index].isupvoted ="1"
           }
         })
         res.status(200).send({
