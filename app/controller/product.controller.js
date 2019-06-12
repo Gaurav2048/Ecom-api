@@ -7,9 +7,14 @@ const Upvote = db.Upvote;
 const Category = db.Caterogy;
 // Fetch all products 
 exports.findAll = (req, res) => {
-  var { category, user_id } = req.query;
+  var { category, user_id, id } = req.query;
 
   Product.findAll({
+    where:{
+      id:{
+        [Op.gt]: id
+      }
+    }, 
     limit: 10,
     order: [
       ['upvoted', 'DESC']
