@@ -10,7 +10,7 @@ exports.findAll = (req, res) => {
   var { category, user_id, leng,offset } = req.query;
 
   Product.findAll({
-    limit:leng, 
+    limit:5, 
     offset:parseInt(offset, 0), 
     where:{
       category: category
