@@ -17,7 +17,8 @@ exports.findAll = (req, res) => {
     }, 
     order: [
       ['upvoted', 'DESC']
-    ]
+    ],
+    subQuery:false
   }).then(products => {
     var promises = [];
     products.forEach(product => {
