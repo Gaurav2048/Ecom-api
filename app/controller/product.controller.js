@@ -15,8 +15,8 @@ exports.findAll = (req, res) => {
         [Op.gt]: id
       }
     }, 
-    limit: 10,
-    offset: offset, 
+    limit: 5,
+    offset, 
     order: [
       ['upvoted', 'DESC']
     ],
