@@ -7,10 +7,10 @@ const Upvote = db.Upvote;
 const Category = db.Caterogy;
 // Fetch all products 
 exports.findAll = (req, res) => {
-  var { category, user_id, limit,offset } = req.query;
+  var { category, user_id, leng,offset } = req.query;
 
   Product.findAll({
-    limit:parseInt(limit, 5), 
+    limit:parseInt(leng, 5), 
     offset:parseInt(offset, 0), 
     where:{
       category: category
