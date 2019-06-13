@@ -10,15 +10,14 @@ exports.findAll = (req, res) => {
   var { category, user_id, limit,offset } = req.query;
 
   Product.findAll({
-    limit, 
-    offset, 
+    limit:5, 
+    offset:5, 
     where:{
       category: category
     }, 
     order: [
       ['upvoted', 'DESC']
-    ],
-    subQuery:false
+    ]
   }).then(products => {
     var promises = [];
     products.forEach(product => {
