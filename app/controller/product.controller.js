@@ -40,9 +40,9 @@ exports.findAll = (req, res) => {
 
       results.map((result, index) => {
         if (result === null) {
-          products[index].upvoted = "0"
+          products[index].isupvoted = "0"
         } else {
-          products[index].upvoted = "1"
+          products[index].isupvoted = "1"
         }
       })
       return res.status(200).send({
