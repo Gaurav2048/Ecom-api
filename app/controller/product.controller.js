@@ -7,20 +7,18 @@ const Upvote = db.Upvote;
 const Category = db.Caterogy;
 // Fetch all products 
 exports.findAll = (req, res) => {
-  var { category, user_id, id, offset } = req.query;
+  var { category, user_id, page,pageSize } = req.query;
 
   Product.findAll({
     where:{
-      id:{
-        [Op.gt]: id
-      },
       category: category
     }, 
     offset, 
     limit: 5,
     order: [
       ['upvoted', 'DESC']
-    ]
+    ],
+    paginate({ page, pageSize })
   }).then(products => {
     var promises = [];
     products.forEach(product => {
