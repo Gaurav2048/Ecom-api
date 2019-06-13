@@ -13,8 +13,6 @@ exports.findAll = (req, res) => {
     where:{
       category: category
     }, 
-    offset, 
-    limit: 5,
     order: [
       ['upvoted', 'DESC']
     ],
