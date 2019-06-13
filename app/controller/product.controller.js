@@ -10,14 +10,17 @@ exports.findAll = (req, res) => {
   var { category, user_id, id, offset } = req.query;
 
   Product.findAll({
+    where:{
+      id:{
+        [Op.gt]: id
+      },
+      category: category
+    }, 
     offset, 
     limit: 5,
     order: [
       ['upvoted', 'DESC']
-    ],
-    where: {
-      category: category
-    }
+    ]
   }).then(products => {
     var promises = [];
     products.forEach(product => {
