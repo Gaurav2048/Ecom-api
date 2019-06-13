@@ -12,9 +12,6 @@ exports.findAll = (req, res) => {
   Product.findAll({
     limit:5, 
     offset:parseInt(offset, 0), 
-    where:{
-      category: category
-    }, 
     order: [
       ['upvoted', 'DESC']
     ]
