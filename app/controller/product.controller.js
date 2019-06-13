@@ -10,11 +10,6 @@ exports.findAll = (req, res) => {
   var { category, user_id, id, offset } = req.query;
 
   Product.findAll({
-    where:{
-      id:{
-        [Op.gt]: id
-      }
-    }, 
     offset, 
     limit: 5,
     order: [
