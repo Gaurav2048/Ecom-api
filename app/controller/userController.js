@@ -22,12 +22,13 @@ exports.signup = (req, res)=>{
         };
 
         return res.status(200).send({
-            success: true
-        })
+            success: true, 
+            "message":"user created"
+            })
     }).catch(err=>{
         res.status(500).send({
-            success: true,
-            "message": "unable to register user now"
+            success: false,
+            "message": "Internal server error"
         })
     })
 }
