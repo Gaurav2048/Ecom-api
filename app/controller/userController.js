@@ -22,9 +22,7 @@ exports.signup = (req, res)=>{
         };
 
         return res.status(200).send({
-            success: true, 
-            "message":"user created",
-            user
+            success: true
         })
     }).catch(err=>{
         res.status(500).send({
