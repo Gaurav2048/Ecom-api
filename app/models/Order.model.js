@@ -1,12 +1,45 @@
 module.exports = (sequelize , Sequelize)=>{
     const Order= sequelize.define('orders', {
-        userid: {
+        orderId: {
+            type: Sequelize.STRING,
+            allowNull : false
+        },
+        productName:{
+            type: Sequelize.STRING,
+            allowNull : false
+        }, 
+        userId:{
+            type: Sequelize.STRING,
+            allowNull : false
+        }, 
+        image:{
             type: Sequelize.STRING
         },
-        orderAmount: {
-            type: Sequelize.INTEGER
+        productId:{
+            type: Sequelize.STRING,
+            allowNull : false
+        },
+        price:{
+            type:Sequelize.STRING,
+            allowNull : false
+        },
+        quantity: {
+            type: Sequelize.STRING, 
+            allowNull: false
+        },
+        discount:{
+            discount:Sequelize.STRING,
+            allowNull : false
         },
         status:{
+            type: Sequelize.STRING,
+            allowNull : false
+        },
+        timestamp:{
+            type: Sequelize.STRING,
+            allowNull : false
+        }, 
+        delivery:{
             type: Sequelize.STRING
         }
     });
