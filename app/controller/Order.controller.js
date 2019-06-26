@@ -27,7 +27,7 @@ exports.addToCart = (req, res) =>{
         Promises.push(promise); 
     }); 
 
-    Promise.all(promise).then(results =>{
+    Promise.all(Promises).then(results =>{
         res.status(200).send({
             success: true, 
             message: "We received your order. Working on it"
