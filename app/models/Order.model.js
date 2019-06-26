@@ -1,5 +1,5 @@
 module.exports = (sequelize , Sequelize)=>{
-    const Order= sequelize.define('orders', {
+    const Order= sequelize.define('orderDetail', {
         orderId: {
             type: Sequelize.STRING,
             allowNull : false
