@@ -28,7 +28,7 @@ module.exports = (sequelize , Sequelize)=>{
             allowNull: false
         },
         discount:{
-            discount:Sequelize.STRING,
+            type:Sequelize.STRING,
             allowNull : false
         },
         status:{
