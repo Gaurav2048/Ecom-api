@@ -45,14 +45,14 @@ exports.addToCart = (req, res) =>{
 
 exports.orderHistory = (req, res)=>{
 
-    var {userid } = req.query; 
+    var {userId } = req.query; 
 
     orders.findAll({
         where : {
-            userId:userid
+            userId
         }
     }).then(items=>{
-            res.status(200).send(userid); 
+            res.status(200).send(items); 
     }).catch(err=>{
         res.status(500).send(err); 
     })
