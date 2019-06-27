@@ -5,5 +5,7 @@ module.exports = function(app){
 
     app.post('/api/placeOrder',authJwt.verifyToken,orderController.addToCart ); 
 
+    app.get('/api/orders',authJwt.verifyToken,orderController.orderHistory ); 
+
 
 }
