@@ -43,3 +43,20 @@ exports.addToCart = (req, res) =>{
 
 }
 
+exports.orderHistory = (req, res)=>{
+
+    var {userid } = req.query; 
+
+    orders.find({
+        where : {
+            userId:userid
+        }
+    }).then(items=>{
+        if(!item){
+            res.status(500).send(); 
+        }else {
+            res.status(200).send(items); 
+        }
+    })
+
+}
