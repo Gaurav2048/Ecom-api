@@ -57,6 +57,8 @@ exports.orderHistory = (req, res)=>{
         }else {
             res.status(200).send(items); 
         }
+    }).catch(err=>{
+        res.status(500).send(err); 
     })
 
 }
