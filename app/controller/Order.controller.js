@@ -52,11 +52,7 @@ exports.orderHistory = (req, res)=>{
             userId:userid
         }
     }).then(items=>{
-        if(!item){
-            res.status(500).send(); 
-        }else {
-            res.status(200).send(items); 
-        }
+            res.status(200).send(userid); 
     }).catch(err=>{
         res.status(500).send(err); 
     })
