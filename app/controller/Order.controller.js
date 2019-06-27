@@ -47,7 +47,7 @@ exports.orderHistory = (req, res)=>{
 
     var {userid } = req.query; 
 
-    orders.find({
+    orders.findAll({
         where : {
             userId:userid
         }
